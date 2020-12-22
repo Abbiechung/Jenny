@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <title>Kurashiki</title>
+</head>
+<style>
+html{
+    background-image: url('images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    width: 800px;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 50px;
+}
+img{
+    width: 100%;
+}
+.photo{
+    float: left;
+}
+
+</style>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="photo">
+                <img src="images/01.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/02.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/03.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/04.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/05.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/06.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/07.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/08.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            let idx = 0;
+            let photo = $('.photo')
+            let photoNums = photo.length
+            let photoWidth = 800
+
+            $('.wrapper').css('width',photoNums*photoWidth)
+
+            function move(){
+                $('.wrapper').animate({
+                    marginLeft: -(idx*photoWidth)
+                })
+            }
+
+            setInterval(function(){
+                if(idx == photoNums-1){
+                    idx = 0
+                }else{
+                    idx++
+                }
+                move()
+            },2000)
+        })
+    </script>
+</body>
+</html>

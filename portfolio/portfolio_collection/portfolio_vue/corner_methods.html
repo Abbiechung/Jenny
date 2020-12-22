@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <title>Sumikko Gurashi</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        color:#3d3d3d;
+        /* margin: 0;
+        padding: 0;
+        border: 0; */
+    }
+
+    html {
+        /* background: linear-gradient(to bottom, rgb(255, 254, 235) 0%, rgb(249, 249, 249) 50%, rgb(245, 245, 245) 51%, rgb(255, 255, 255) 100%); */
+        background-image: url('images_corner/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h2 {
+        background: linear-gradient(to bottom, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgb(217, 239, 255) 51%, rgba(213, 235, 251, 1) 100%);
+        padding: 12px;
+        color: #fff;
+        border-radius: 7px;
+        text-shadow: 3px 3px 2px #6e6e6e;
+        letter-spacing: 10px;
+        border: 2px solid #d3fff9;
+    }
+
+
+    .container {
+        width: 500px;
+        margin: auto;
+    }
+
+    .sale {
+        font-size: 25px;
+        font-weight: bold;
+        margin: 15px 0;
+    }
+
+    .ins {
+        background: linear-gradient(to bottom, rgba(246, 248, 249, 1) 0%, rgba(229, 235, 238, 1) 50%, rgba(215, 222, 227, 1) 51%, rgba(245, 247, 249, 1) 100%);
+        padding: 15px 10px;
+        box-shadow: 1px 1px 3px 0px #e3e3e3;
+        color: #575757;
+        border: 1px solid #d6d6d6;
+    }
+
+    /* 給顏色一個框框樣式 */
+    .colorbox {
+        width: 25px;
+        height: 25px;
+        border: 1px solid #000;
+    }
+
+    .colthcolor {
+        float: left;
+    }
+
+    .colthcolor li {
+        list-style: none;
+        margin: 10px;
+        float: left;
+        
+    }
+    .colthcolor li:hover{
+        cursor: pointer;
+    }
+
+    .detail {
+        float: left;
+        text-align:left;
+    }
+
+    .cart {
+        float: left;
+        width: 500px;
+    }
+
+    img {
+        width: 80%;
+        /* border: 1px solid #d6d6d6;
+        box-shadow: 1px 1px 1px #c7c7c7; */
+
+        border-style: dashed;
+        border-color: #bebebe;
+    }
+
+    .top {
+        text-align: center;
+    }
+
+    .sale {
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div id="app">
+            <div class="top">
+                <h2>{{name}}</h2>
+                <div class="detail">
+                    <ul>
+                        <li v-for="detail in details">{{detail}}</li>
+                    </ul>
+                </div>
+                <img :src="link" alt="">
+            </div>
+            <div class="sale">
+                <div class="stock" v-if="instock > 10" style="color:rgb(77, 184, 255);">熱賣中</div>
+                <div class="stock" v-else-if="instock > 0 && instock <= 10 " style="color:#ff0000">低庫存</div>
+                <div class="stock" v-else style="color:rgb(151, 151, 151)">補貨中</div>
+            </div>
+            <div class="ins">{{characters}}</div>
+            <div class="colthcolor">
+                <ul>
+                    <li v-for="(variant,idx) in variants" class="colorbox" :style="{backgroundColor:variant.color}"
+                        @click="changecolor(idx)"></li>
+                </ul>
+            </div>
+            
+            <div class="cart">
+                <button @click="addcart()" :disabled="instock == 0">加入購物車</button>
+                <div class="nums">購物車: {{nums}}</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                name: '角落生物大集合',
+                link: 'images_corner/007.jpg',
+                instock: 12,
+                characters: '',
+                details: [
+                    '角落小夥伴,是由日本企業San-X所創造出的擬人角色',
+                    '是一群總是偷偷躲在角落裡的好朋友,只有角落才能讓他們感到安心',
+                ],
+                variants: [
+                    {
+                        id: '1',
+                        color: '#ffffff',
+                        image: 'images_corner/001.jpg',
+                        quantity: 12,
+                        character: '一隻白色、胖胖且害羞的熊，因為覺得北方真的太冷了，毅然決定逃往南方，喜歡喝熱熱的茶，常常帶著一個裹巾，那是他的行李。',
+                    },
+                    {
+                        id: '2',
+                        color: '#e3eb96',
+                        image: 'images_corner/002.jpg',
+                        quantity: 2,
+                        character: '其實自己也不知道自己是什麼，只記得以前頭上好像有個蓋子，不知道自己是什麼東西，所以對自己很沒自信。喜歡閱讀和聽音樂。',
+                    },
+                    {
+                        id: '3',
+                        color: '#f3dbab',
+                        image: 'images_corner/003.jpg',
+                        quantity: 5,
+                        character: '吃完炸豬排的時候，盤子裡總有些外層肥肉，麵皮等被剩下，因為太油了不會吃光，這個角色便是這些剩餘麵皮與肥肉的組合物，全身共有99%的肥肉與麵皮，全身上下只有1%的瘦肉',
+                    },
+                    {
+                        id: '4',
+                        color: '#fcd4d2',
+                        image: 'images_corner/004.jpg',
+                        quantity: 12,
+                        character: '白熊的行李，占位時常用到，內容物不明，沒表情，被珍惜的時候會微笑。',
+                    },
+                    {
+                        id: '5',
+                        color: '#ffedab',
+                        image: 'images_corner/005.jpg',
+                        quantity: 0,
+                        character: '炸蝦的尾巴，因為太硬所以被吃剩下來，和炸豬排是好朋友。',
+                    },
+                    {
+                        id: '6',
+                        color: '#cadcf4',
+                        image: 'images_corner/006.jpg',
+                        quantity: 8,
+                        character: '從南方來的企鵝，旅行到日本的時候，遇到角落夥伴們，被引到角落去，玩了一段時間就繼續旅行了',
+                    },
+                    {
+                        id: '8',
+                        color: '#fee8a9',
+                        image: 'images_corner/008.jpg',
+                        quantity: 6,
+                        character: '害羞的貓咪，喜歡躲在角落裡背對著大家抓牆壁。最喜歡的食物是罐頭',
+                    },
+
+                ],
+                nums: 0,
+
+            },
+            methods: {
+                addcart() {
+                    this.nums += 1
+                },
+                changecolor(idx) {
+                    this.link = this.variants[idx].image;
+                    this.instock = this.variants[idx].quantity;
+                    this.characters = this.variants[idx].character;
+
+                },
+
+            },
+            computed: {
+
+            }
+        })
+
+    </script>
+</body>
+
+</html>

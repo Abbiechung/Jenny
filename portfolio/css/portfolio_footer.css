@@ -1,0 +1,61 @@
+/*contact*/
+#contact{
+    margin-top: 50px;
+    background-image: url('../images/contact_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#contact h2{
+    color: #fff;
+    text-shadow: 3px 3px 3px #000;
+    font-size: 35px;
+    padding-top: 20px;
+}
+#contact .col-6{
+    text-align: center;
+    color: #afa053;
+    background: #334456e3;
+}
+#contact h3{
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 3px #000;
+    color: #fff2aa;
+    font-size: 12px;
+}
+@media screen and (min-width:480px){
+#contact h3{
+    letter-spacing: 0px;
+    text-shadow: 3px 3px 3px #000;
+    color: #fff2aa;
+    font-size: 15px;
+    
+}
+}
+@media screen and (min-width:768px){
+#contact h3{
+    letter-spacing: 3px;
+    text-shadow: 3px 3px 3px #000;
+    color: #fff2aa;
+    font-size: 16px;
+}
+}
+#contact p{
+    color: #6a6a6a;
+    text-align: center;
+}
+
+#gotop {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%);
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 3px #959595;
+}
+#gotop a {
+    color: #ffffff;
+
+}

@@ -1,0 +1,136 @@
+html {
+    background-image: url('../images/BG.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    margin-top: 50px;
+}
+
+.layout_1 img {
+    border: 1px solid #aaaaaa;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.layout_1 img:hover {
+    transform: scale(1.2);
+    box-shadow: 1px 1px 5px 1px #c6c6c6;
+    border: 2px solid #ff7070;
+}
+
+.layout_1 .title {
+    text-align: center;
+}
+
+.layout_1 h3 {
+    font-size: 40px;
+    color: #ffe400;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.layout_1 p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.layout_2 {
+    margin-top: 50px;
+}
+
+.layout_2 .title {
+    text-align: center;
+}
+
+.layout_2 h3 {
+    font-size: 40px;
+    color: #ffe400;
+    text-shadow: 1px 1px 1px #000;
+}
+
+.layout_2 p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.layout_2 img {
+    border: 1px solid #8b8b8b;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.layout_2 img:hover {
+    transform: scale(1.2);
+    box-shadow: 1px 1px 5px 1px #c6c6c6;
+    border: 2px solid #ff7070;
+}
+
+.pic {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, .8);
+    top: 0;
+    left: 0;
+    display: none;
+
+}
+
+
+.pic .fixed-width {
+    width: 60%;
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 5%;
+    margin: 15% auto;
+}
+
+.pic .img {
+    width: 20%;
+    margin: auto;
+
+}
+
+.pic .img_3 {
+    width: 57%;
+    margin: auto;
+}
+
+.pic .btn_1 {
+    width: 5%;
+    position: fixed;
+    right: 0;
+    cursor: pointer;
+}
+
+.col-4 {
+    padding: 30px;
+}
+
+.col-3 {
+    padding: 20px;
+}
+
+.pic_2 .pic2 {
+    margin-top: 25%;
+}
+
+#gotop {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(255,183,107,1) 0%,rgba(255,167,61,1) 50%,rgba(255,124,0,1) 51%,rgba(255,127,4,1) 100%);
+    position: fixed;
+    right: 10px;
+    bottom: 15px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 3px #ff9270e3;
+}
+
+#gotop a {
+    color: #ffffff;
+
+}

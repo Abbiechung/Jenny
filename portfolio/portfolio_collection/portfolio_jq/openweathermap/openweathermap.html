@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;1,300&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="../../../../favicon.ico" type="image/x-icon">
+    <title>Weathermap</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Comic Neue', sans-serif, '微軟正黑體';
+    }
+
+    body {
+        background-image: url('images/select.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .container {
+        width: 325px;
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    .maintitle {
+        text-align: center;
+        letter-spacing: 9px;
+        font-size: 25px;
+        color: #666;
+        text-shadow: 1px 2px 6px #9e9e9e;
+    }
+
+    .title {
+        margin: 15px 0;
+        color: #000000;
+        text-shadow: 1px 1px 1px #00bcffdb;
+    }
+
+    .img {
+        width: 50%;
+    }
+
+    #weather {
+        padding: 10px;
+        border: 1px solid #a1a1a1;
+        height: 450px;
+        margin-top: 20px;
+        box-shadow: 1px 1px 3px 1px #d7d7d7;
+
+    }
+
+    .name {
+        font-size: 25px;
+        font-weight: bold;
+        color: #ff7e7e;
+        text-align: center;
+    }
+
+    .temp {
+        font-size: 57px;
+        font-weight: bold;
+        text-align: center;
+        color: #fff;
+        text-shadow: 2px 3px 2px #333;
+    }
+
+    .description {
+        background: #ffffff63;
+        padding: 3px;
+        border: 1px solid #fff;
+    }
+
+    .humidity {
+        background: #ffffff63;
+        padding: 3px;
+        border: 1px solid #fff;
+    }
+
+    .sunrise {
+        background: #ffffff63;
+        padding: 3px;
+        border: 1px solid #fff;
+    }
+
+    .sunset {
+        background: #ffffff63;
+        padding: 3px;
+        border: 1px solid #fff;
+    }
+
+    .taichung {
+        /* background: red; */
+        background-image: url('images/taichung.jpg');
+        background-size: cover;
+    }
+
+    .london {
+        background: rgb(172, 72, 72);
+        background-image: url('images/london.jpg');
+        background-size: cover;
+    }
+
+    .tokyo {
+        background: rgb(54, 47, 47);
+        background-image: url('images/tokyo.jpg');
+        background-size: cover;
+    }
+
+    .christchurch {
+        background: rgb(54, 47, 47);
+        background-image: url('images/christchurch.jpg');
+        background-size: cover;
+    }
+
+    .prague {
+        background: rgb(54, 47, 47);
+        background-image: url('images/prague.jpg');
+        background-size: cover;
+    }
+
+    .queenstown {
+        background: rgb(54, 47, 47);
+        background-image: url('images/queenstown.jpg');
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <div class="maintitle">
+        <h3>請選擇城市</h3>
+    </div>
+    <div class="container">
+        <div class="select">
+            <select name="" id="city">
+                <option value="">Select</option>
+                <option value="Taichung">Taichung</option>
+                <option value="London">London</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="ChristChurch">ChristChurch</option>
+                <option value="Prague">Prague</option>
+                <option value="Queenstown">Queenstown</option>
+            </select>
+        </div>
+        <div id="weather">
+
+
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            $('#city').change(function () {
+                $('#weather').empty()
+                let city = $('#city').val()
+
+                //更換背景圖
+                if (city == 'Taichung') {
+                    $('#weather').removeClass()
+                    $('#weather').addClass('taichung')
+                } else if (city == 'London') {
+                    $('#weather').removeClass()
+                    $('#weather').addClass('london')
+                } else if (city == 'Tokyo') {
+                    $('#weather').removeClass()
+                    $('#weather').addClass('tokyo')
+                } else if (city == 'ChristChurch') {
+                    $('#weather').removeClass()
+                    $('#weather').addClass('christchurch')
+                } else if (city == 'Prague') {
+                    $('#weather').removeClass()
+                    $('#weather').addClass('prague')
+                } else if (city == 'Queenstown') {
+                    $('#weather').removeClass()
+                    $('#weather').addClass('queenstown')
+                }
+                $.ajax({
+                    url: 'http://api.openweathermap.org/data/2.5/weather',
+                    data: {
+                        q: city,
+                        appid: '8ce27a7ab8fbe72463db38e6fa5fdcae',
+                        units: 'metric',
+                    },
+                    success: function (data) {
+                        console.log(data)
+                        let name = data.name
+                        let temp_ = data.main.temp
+                        let temp = Math.round(temp_)
+                        let weather = data.weather[0].main
+                        let description = data.weather[0].description
+                        let humidity = data.main.humidity
+                        let sunrise = new Date(data.sys.sunrise * 1000)
+                        let sunrise_hours = sunrise.getHours()
+                        let sunrise_mins = sunrise.getMinutes()
+                        let sunrise_secs = sunrise.getSeconds()
+                        let sunset = new Date(data.sys.sunset * 1000)
+                        let sunset_hours = sunset.getHours()
+                        let sunset_mins = sunset.getMinutes()
+                        let sunset_secs = sunset.getSeconds()
+
+                        let content = `
+                    <div class="content">
+                        <img src="" class="img">
+                        <div class="name">${name}</div>
+                        <div class="title temp">${temp}°</div>
+                        <div class="title description">Description: ${description}</div>
+                        <div class="title humidity">Humidity: ${humidity}</div>
+                        <div class="title sunrise">Sunrise: ${sunrise_hours}:${sunrise_mins}:${sunrise_secs}</div>
+                        <div class="title sunset">Sunset: ${sunset_hours}:${sunset_mins}:${sunset_secs}</div>
+                    </div>
+                
+                `
+                        $('#weather').append(content)
+
+                        let imgSrc = ''
+
+                        if (weather == 'Clouds' || weather == 'Mist') {
+                            imgSrc = 'images/clouds.png'
+                        } else if (weather == 'Clear') {
+                            imgSrc = 'images/sun.png'
+                        } else if (weather == 'Rain') {
+                            imgSrc = 'images/rain.png'
+                        } else if (weather == 'Snow') {
+                            imgSrc = 'images/snow.png'
+                        } else if (weather == 'Thunderstorm') {
+                            imgSrc = 'images/thunder.png'
+                        } else if (weather == 'Fog') {
+                            imgSrc = 'images/fog.png'
+                        } else {
+                            imgSrc = 'images/none.png'
+                        }
+
+                        $('img').attr('src', imgSrc)
+
+
+
+
+
+                    },
+                    error: function () {
+                        console.log('error')
+                    }
+                })
+
+            })
+        })
+    </script>
+</body>
+
+</html>

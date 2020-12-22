@@ -1,0 +1,81 @@
+.hamburger{
+    display: block;
+    /* float: right; */
+}
+@media screen and (min-width:768px){
+.hamburger{
+    display: none;
+    /* float: right; */
+}
+}
+.hamburger i{
+    color: #ffffff;
+    margin: 10px 0 15px 15px;
+    background: linear-gradient(to bottom, rgba(12, 27, 46, 0.48) 0%,rgba(10, 22, 38, 0.19) 41%,rgba(9, 21, 35, 0.65) 100%);
+    padding: 10px;
+    border-radius: 12px;
+}
+
+nav{
+    line-height: 95px;
+    position: fixed;
+    z-index:1;
+    font-weight: bold;
+    font-size: 20px;
+    background: #607d8bb8;
+}
+@media screen and (min-width:768px){
+nav{
+    height: 60px;
+    line-height: 60px;
+    position: fixed;
+    z-index:1;
+    font-weight: bold;
+    font-size: 20px;
+    background: #607d8bb8;
+}
+}
+nav .menu{
+    display: none;
+}
+@media screen and (min-width:768px){
+nav .menu{
+    float: right;
+    display: block;
+}
+}
+@media screen and (min-width:768px){
+nav li{
+    float: left;
+    margin-left: 48px;
+}
+}
+nav .title{
+    border: 1px solid #fffacc;
+}
+@media screen and (min-width:768px){
+nav .title{
+    border: none;
+    position: relative;
+    height: 60px;
+}
+}
+nav li a{
+    display: block;
+    color: #ffffff;
+    margin-left: 20px
+}
+@media screen and (min-width:768px){
+nav li a{
+    display: block;
+    color: #fff;
+}
+}
+@media screen and (min-width:768px){
+nav li a:hover{
+    color: rgb(255, 103, 103);
+    cursor: pointer;
+    transition: .5s;
+    text-shadow: 2px 2px 2px #464646;
+}
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="css/portfolio_nav.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>portfolio_collection</title>
+</head>
+
+<body>
+    <nav class="nav full-width">
+
+    </nav>
+    <div id="collection" class="header full-width">
+        <div class="fixed-width clearfix">
+
+
+
+            <div class="col-6">
+                <div class="border">
+                    <div class="img">
+                        <a href="portfolio_collection/portfolio_vue/hotelList.html" target="_blank">
+                            <img src="images/vue.hotelList.jpg" alt="">
+                        </a>
+                    </div>
+                    <h3>Axios 串接API</h3>
+                    <div class="content">
+                        <p>Axios 抓遠端資料 串接API
+                            <br>用vue架構 顯示高雄飯店旅館列表
+                            <br>資料來源: 高雄市政府
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="border">
+                    <div class="img">
+                        <a href="portfolio_collection/portfolio_jq/openweathermap/openweathermap.html" target="_blank">
+                            <img src="images/jq_weather.jpg" alt="">
+                        </a>
+                    </div>
+                    <h3>Ajax 串接API</h3>
+                    <div class="content">
+                        <p>Ajax 抓遠端資料 串接API
+                            <br>各種不同地區的天氣預報
+                            <br>資料來源: https://openweathermap.org/
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="border">
+                    <div class="img">
+                        <a href="portfolio_collection/portfolio_jq/ajax_api/0517_ajax_api.html" target="_blank"><img
+                                src="images/jq_ajax_api.jpg" alt="">
+                        </a>
+                    </div>
+                    <h3>Ajax 串接API</h3>
+                    <div class="content">
+                        <p>Ajax 抓遠端資料 串接API
+                            <br>UI介面 可點選下、上一頁
+                            <br>資料來源: https://picsum.photos/v2/list
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="border">
+                    <div class="img">
+                        <a href="portfolio_collection/portfolio_js/fetch.html" target="_blank"><img
+                                src="images/js_fetch.jpg" alt=""></a>
+                    </div>
+                    <h3>Fetch 串接API</h3>
+                    <div class="content">
+                        <p>Fetch 抓遠端資料 串接API
+                            <br>重新整理就會有不同筆資料
+                            <br>資料來源: https://randomuser.me/
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="border">
+                    <div class="img">
+                        <a href="portfolio_collection/portfolio_js/todo.html" target="_blank"><img
+                                src="images/js_todo.jpg" alt=""></a>
+                    </div>
+                    <h3>代辦事項</h3>
+                    <div class="content">
+                        <p>原生JS
+                            <br>任意自由新增
+                            <br>刪除事項
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="border">
+                <div class="img">
+                    <a href="portfolio_collection/portfolio_vue/corner_methods.html" target="_blank"><img
+                            src="images/vue.corner.jpg" alt=""></a>
+                </div>
+                <h3>vue 小物件</h3>
+                <div class="content">
+                    <p>用vue架構
+                        <br>選取小圖示上面大圖會更換
+                        <br>以及加入購物車
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="border">
+                <div class="img">
+                    <a href="portfolio_collection/portfolio_vue/vue-axios_button.html" target="_blank"><img
+                            src="images/vue_axios.jpg" alt=""></a>
+                </div>
+                <h3>Axios 串接API</h3>
+                <div class="content">
+                    <p>用axios抓遠端資料
+                        <br> 串接API
+                        <br>點選按紐會出現不同的張數
+                    </p>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="contact full-width">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="../js/index.js"></script>
+    <script>
+        $(function () {
+            $('.nav').load('portfolio_nav.html')
+            $('.contact').load('portfolio_footer.html')
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="css/portfolio_nav.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="nav full-width">
+        <div class="fixed-width clearfix">
+            <div class="hamburger">
+                <i class="fas fa-bars fa-2x"></i>
+            </div>
+            <div class="logo"></div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <div class="title">
+                            <a href="../index.html" style="font-size: 25px">回首頁</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            <a href="portfolio_project.html">專案作品</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            <a href="portfolio_collection.html">小物件</a>
+                        </div>
+                    </li>
+                    <!-- <li>
+                        <div class="title">
+                            <a href="portfolio_vue.html">Vue 小物件</a>
+                        </div>
+                    </li> -->
+                    <li>
+                        <div class="title">
+                            <a href="portfolio_design.html">設計類</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
+    <script>
+        $(function () {
+            $('.hamburger').click(function () {
+                $('.menu').slideToggle()
+            })
+        })
+    </script>
+</body>
+
+</html>

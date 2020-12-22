@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <title>Kurashiki</title>
+</head>
+<style>
+    html {
+        background-image: url('images/bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 750px;
+    }
+
+    .container {
+        width: 800px;
+        margin: auto;
+        position: relative;
+        margin-top: 50px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .photo {
+        position: absolute;
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="photo">
+                <img src="images/01.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/02.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/03.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/04.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/05.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/06.jpg" alt="">
+            </div>
+            <div class="photo">
+                <img src="images/07.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            let idx = 0;
+            let photo = $('.photo')
+            let photoNums = photo.length
+
+            $(photo).eq(0).show()
+
+            function show() {
+                let nextphoto = (idx + 1) % photoNums
+                $(photo).eq(nextphoto).fadeIn(2500)
+                $(photo).eq(idx).fadeOut(2500)
+                idx = nextphoto
+            }
+
+            setInterval(show, 3000)
+        })
+    </script>
+</body>
+
+</html>

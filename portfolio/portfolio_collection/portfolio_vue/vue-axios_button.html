@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <title>Vue-axios</title>
+</head>
+
+<style>
+    html {
+        background: linear-gradient(to bottom, rgba(184, 225, 252, 1) 0%, rgba(169, 210, 243, 1) 10%, rgba(144, 186, 228, 1) 25%, rgb(199, 226, 255) 37%, rgba(144, 191, 240, 1) 50%, rgba(107, 168, 229, 1) 51%, rgba(162, 218, 245, 1) 83%, rgba(189, 243, 253, 1) 100%);
+
+    }
+
+    #app {
+        width: 1200px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .btn {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100px;
+        padding: 8px;
+        border: 1px solid #cfcfcf;
+        background: linear-gradient(to bottom, rgba(174, 188, 191, 1) 0%, rgba(110, 119, 116, 1) 50%, rgba(10, 14, 10, 1) 51%, rgba(10, 8, 9, 1) 100%);
+        border: 1px solid #dcdcdc;
+        color: #fff;
+        margin-left: 10px;
+        letter-spacing: 2px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    button:hover{
+        background: linear-gradient(45deg, rgba(174,188,191,1) 0%,rgba(110,119,116,1) 50%,rgba(10,14,10,1) 51%,rgba(10,8,9,1) 100%);
+        /* transition: .5s; */
+        position: relative;
+        left: 1px;
+        top: 2px;
+        box-shadow: 2px 2px 3px #5a5a5a;
+    }
+
+    .pic {
+        width: 500px;
+        height: 200px;
+        float: left;
+        margin: 3px;
+        padding: 8px;
+        border: 1px solid #aeaeae;
+        background: linear-gradient(to bottom, rgba(242, 246, 248, 1) 0%, rgb(221, 241, 255) 50%, rgb(255, 255, 255) 51%, rgba(224, 239, 249, 1) 100%);
+        color: #6a6a6a;
+        overflow: hidden;
+    }
+
+    img {
+        width: 300px;
+        height: 200px;
+        border-radius: 5px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="btn">
+            <button @click="getbtn(6)">出現6張圖</button>
+            <button @click="getbtn(10)">出現10張圖</button>
+            <button @click="getbtn(26)">出現26張圖</button>
+            <button @click="getbtn(5)">出現5張圖</button>
+            <button @click="getbtn(20)">出現20張圖</button>
+        </div>
+        <div class="pic" v-for="(pic,i) in pics">
+            <img :src="pic.download_url" alt="">
+            <span>Author: {{pic.author}}</span>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            pics: [],
+        },
+        methods: {
+            getbtn(v) {
+                axios('https://picsum.photos/v2/list', {
+                    params: {
+                        limit: v
+                    }
+                })
+                    .then(res => {
+                        this.pics = res.data
+                        console.log(res.data)
+                    })
+            }
+        },
+        // mounted(){
+        //     axios('https://picsum.photos/v2/list',{
+        //         params:{
+        //             limit: 20
+        //         }
+        //     })
+        //     .then(res => {
+        //         this.pics = res.data
+        //         console.log(res.data)
+        //     })
+        // }
+    })
+
+</script>
+
+</html>

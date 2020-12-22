@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../favicon.ico" type="image/x-icon">
+    <!-- <meta http-equiv="Access-Control-Allow-Origin" content="*"> -->
+    <title>Ajax-pic</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .clearfix::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .fixed-width {
+        width: 1200px;
+        margin: auto;
+
+    }
+
+    .col-3 {
+        width: calc(100% / 12 * 3);
+    }
+
+    .col-4 {
+        width: calc(100% / 12 * 4);
+    }
+
+    [class*='col'] {
+        float: left;
+        padding: 15px;
+
+    }
+
+    header h2 {
+        font-size: 60px;
+        text-align: center;
+        padding: 50px;
+        color: #666;
+        letter-spacing: 3px;
+    }
+
+    header.bg {
+        background: #F4F7FC;
+        margin: 50px 0;
+    }
+
+    img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .id {
+        float: right;
+        margin-right: 50px;
+    }
+
+    .border {
+        border-radius: 15px;
+        box-shadow: 0px 3px 5px 1px #dcdcdc;
+        overflow: hidden;
+    }
+
+    .title {
+        padding: 11px 10px;
+    }
+
+    a {
+        text-decoration: none;
+        display: block;
+        color: #8d8d8d;
+        background: #efefef;
+        padding: 0 20px;
+        border-radius: 10px;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    #page {
+        margin: 30px 0;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 25px;
+        margin: 10px;
+        background: linear-gradient(135deg, rgba(246, 248, 249, 1) 0%, rgba(229, 235, 238, 1) 50%, rgba(215, 222, 227, 1) 51%, rgba(245, 247, 249, 1) 100%);
+        border: 1px solid #c7c7c7;
+        font-size: 18px;
+        color: rgb(128, 128, 128);
+        cursor: pointer;
+    }
+
+    button:hover {
+        position: relative;
+        top: 2px;
+        left: 3px;
+        color: #fff;
+    }
+</style>
+
+<body>
+
+    <header class="full-width bg">
+        <div class="fixed-width">
+            <h2>Image Gallery</h2>
+        </div>
+    </header>
+    <div id="image" class="full-width">
+        <div class="images fixed-width clearfix">
+
+        </div>
+    </div>
+    <div id="page" class="full-width">
+        <div class="fixed-width">
+            <div class="button">
+                <button class="prev">Prev</button>
+                <button class="next">Next</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        $(function () {
+
+            function getUrl(url, data) {
+                let promise = $.ajax({
+                    url: url,
+                    data: data,
+                    crossDomain : true,
+                })
+                return promise
+            }
+
+
+
+            function getList(setPage) {
+                let parameterData = {
+                    page: setPage
+                }
+                let promise = getUrl('https://picsum.photos/v2/list', parameterData)
+                promise.then(function (resData) {
+                    resData.forEach(function (d) {
+                        // console.log(d)
+                        setApi(d)
+                    })
+                },
+                    function (error) {
+                        console.log('error')
+                    })
+            }
+
+            function setApi(d) {
+                let pic = d.download_url
+                let author = d.author
+                let id = d.id
+                let picSrc = d.download_url
+                let content = `
+                <div class="img col-4">
+                    <div class="border">
+                        <img src="${pic}" alt="">
+                        <div class="title">
+                            <p>${author}<span class="id"><a href="${pic}" target="_blank">#${id}</a></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                `
+                $('.images').append(content)
+            }
+
+            getList(1)
+
+
+
+            let currentPage = 1
+            $('.next').click(function () {
+                $('.images').empty()
+                currentPage += 1
+                getList(currentPage)
+
+            })
+            $('.prev').click(function () {
+                $('.images').empty()
+                currentPage -= 1
+                getList(currentPage)
+            })
+
+
+
+
+
+
+        })
+
+    </script>
+
+</body>
+
+</html>

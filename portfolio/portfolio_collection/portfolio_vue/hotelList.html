@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    html {
+        background: linear-gradient(to bottom, rgb(176 191 208) 0%, rgba(125, 185, 232, 0) 100%);
+    }
+
+    .category {
+        border-top: 1px solid #bebebe;
+        margin: 30px 0;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .star,
+    .resList {
+        text-align: center;
+    }
+
+
+    .resList p {
+        border: 1px solid #e8e8e8;
+        padding: 10px;
+        letter-spacing: 2px;
+        color: #909399;
+        text-shadow: 1px 1px 1px #ccc;
+        box-shadow: 1px 1px 1px #ebebeb;
+    }
+
+    .checkButton {
+        position: absolute;
+        right: 30px;
+        color: #000;
+        font-weight: 700;
+        transition: .5s;
+    }
+
+    .resList .checkButton:hover {
+        color: #3a8ee6;
+        font-weight: 900;
+        text-shadow: none;
+        cursor: pointer;
+
+    }
+
+    .box-card {
+        margin-top: 30px;
+    }
+
+    .hotelTitle {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .hotelTitle h3 {
+        font-size: 40px;
+        color: #ff8282;
+    text-shadow: 1px 1px 1px #4b4b4b;
+    }
+
+    .button {
+        text-align: center;
+    }
+
+    .el-button {
+        margin: 10px;
+        font-weight: bold;
+        color: #747474;
+        box-shadow: 1px 1px 2px 1px #919191;
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%);
+    }
+    #app{
+        position: relative;
+    }
+    .img img{
+        position: absolute;
+    top: 280px;
+    width: 25%;
+    opacity: 0.8;
+    z-index: -1;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="hotelTitle">
+            <div class="content">
+                <h3>查詢高雄飯店旅館名單</h3>
+                <p>點擊下列地區顯示當地飯店旅館民宿名單</p>
+            </div>
+
+        </div>
+        <div classs="button">
+            <el-button v-for="(button,i) in areaButton" @click="getHotel(button)">{{button}}</el-button>
+        </div>
+        <div class="category">
+            <el-button v-for="(button,i) in hotelCategory" @click="getStar(button)">{{button}}</el-button>
+        </div>
+        <div class="star" v-if="starSwitch">
+            <el-button v-for="(button,i) in star" @click="getStarHotel(button)">{{button}}</el-button>
+        </div>
+        <div class="resList">
+            <el-card class="box-card" v-for="(button,i) in resname" v-if="resList">
+                <div slot="header" class="clearfix">
+                    <span>{{button}}</span>
+                    <el-button style="float: right; padding: 3px 0" type="text" class="checkButton"
+                        @click="checkButton_resname(button)">查看</el-button>
+                </div>
+
+                <div class="tableList" v-if="tablelList2(button)">
+                    <el-table :data="resInfro" style="width: 100%" ref="name">
+                        <el-table-column prop="旅宿名稱" label="旅宿名稱"></el-table-column>
+                        <el-table-column prop="縣市" label="縣市"></el-table-column>
+                        <el-table-column prop="地址" label="地址"></el-table-column>
+                        <el-table-column prop="電話" label="電話"></el-table-column>
+                        <el-table-column prop="郵遞區號" label="郵遞區號"></el-table-column>
+
+                    </el-table>
+                </div>
+            </el-card>
+
+        </div>
+        <div class="img">
+            <img src="images_hotelList/1.png" alt="">
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                fullList: [],
+                areaButton: [], //按紐
+                hotelCategory: [], //按鈕 旅館的類別
+                star: [],
+                starSwitch: false, //星等 是否要顯示
+                resname: [],
+                _hotelList: [], //暫存 按下星級旅館&旅館後的list
+                resInfro: [], //旅館的詳細資料
+                tableList1: false, //旅館的詳細資料 是否要顯示
+                resList: false, // 一般的旅館
+                click: '',
+            },
+            mounted() {
+                this.getList()
+            },
+            methods: {
+                getList() {
+                    axios('https://api.kcg.gov.tw/api/service/Get/8ed53368-e292-4e2a-80a7-434cf497220c')
+                        .then(res => {
+                            this.fullList = res.data.data
+
+                            //先複製一份新的 fullArea
+                            let fullArea = [...this.fullList]
+
+                            fullArea.forEach(data => {
+                                let area = data.鄉鎮 //找到要的鄉鎮
+                                this.areaButton.push(area)  //放入上面的areaButton陣列
+                            })
+                            let newAreaButton = [...new Set(this.areaButton)]  //使用 new Set 不重複
+                            // console.log(newAreaButton)
+                            this.areaButton = newAreaButton
+                        })
+                },
+                getHotel(v) { //指點到的那個鄉鎮
+                    // console.log(v)
+                    this.tableList1 = false
+                    this.starSwitch = false
+                    this.resList = false
+                    // this.resstarList = false
+
+
+                    let hotelList = [...this.fullList]
+
+                    //先用filter篩選鄉鎮 = 按下去的"鄉鎮"相同
+                    hotelList = hotelList.filter(res => {
+                        // console.log(res)
+                        return res.鄉鎮 == v
+                    })
+
+                    //先把篩選後(filter過濾) 按下的鄉鎮所保留的資料 *暫存* 以供之後使用
+                    this._hotelList = hotelList
+
+                    let empty = []
+                    //找到相同的鄉鎮後, 用forEach搜尋裡面每一筆obj的類別
+                    //push上去let empty=[] 裡
+                    hotelList.forEach(data => {
+                        let category = data.類別
+                        empty.push(category)
+                    })
+
+                    //篩選不重複
+                    let newCategory = [...new Set(empty)]
+
+                    //放入hotelCategory裡
+                    this.hotelCategory = newCategory
+
+
+                },
+                getStar(v) {
+                    // console.log(v)
+
+                    this.starSwitch = true
+                    this.tableList1 = false
+                    this.resList = false
+
+                    //複製上面用filter過濾後的名單
+                    let temp = [...this._hotelList]
+
+                    temp = temp.filter(res => {
+                        return res.類別 == v
+                    })
+
+                    //暫存  星等的飯店 
+                    this._hotelList = temp
+
+                    let _star = [] //星等
+                    let _name = [] //旅館名稱
+                    temp.forEach(data => {
+                        let star = data.星等
+                        let name = data.旅宿名稱
+
+                        if (star == '') {
+                            _name.push(name)
+                        } else {
+                            _star.push(star)
+                        }
+                        this.resList = true
+
+                    })
+
+
+                    let newStar = [...new Set(_star)]
+
+                    this.star = newStar
+                    this.resname = _name
+
+
+                },
+                getStarHotel(v) {
+                    // console.log(v)
+                    this.tableList1 = false
+                    this.resList = true
+
+                    let temp = [...this._hotelList]
+                    // console.log(this._hotelList)
+
+
+                    temp = temp.filter(res => {
+                        return res.星等 == v
+                    })
+
+                    let newResName = []
+                    temp.forEach(res => {
+                        let resName = res.旅宿名稱
+                        newResName.push(resName)
+                    })
+
+                    this.resname = newResName
+                    // console.log(this.resname)
+
+                    //////////////////////////////
+
+
+                },
+                checkButton_resname(v) {
+                    // console.log(v)  //按下要查看的飯店or旅館的名稱
+                    this.click = v
+
+                    let temp = [...this._hotelList]
+                    // console.log(temp)
+
+                    let newInfro = []
+                    temp = temp.find(res => { //暫存 按下星級旅館&旅館後的list 裡面'旅宿名稱' = 點擊的'旅宿名稱'
+                        return res.旅宿名稱 == v
+                    })
+
+                    newInfro.push(temp)
+
+                    this.resInfro = newInfro
+                    // console.log(this.resInfro)
+
+
+                },
+                tablelList2(buttonList) {  //控制是否要顯示的名單
+
+                    // console.log(buttonList)   // 點下後全部的旅館 
+
+                    if (buttonList == this.click) { //名單上的'旅宿名稱' = 點擊的'旅宿名稱'
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>

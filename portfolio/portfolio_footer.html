@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="css/portfolio_footer.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="contact" class="full-width">
+        <div class="fixed-width clearfix">
+            <div class="col-12">
+                <h2>聯繫我</h2>
+            </div>
+            <div class="left col-6">
+                <h3><i class="fas fa-mobile fa-2x"></i>: 0905-601863</h3>
+            </div>
+            <div class="right col-6">
+                <h3><i class="fas fa-envelope fa-2x"></i> :abbiechung5715@yahoo.com.tw</h3>
+            </div>
+            <div class="copyright col-12">
+                <p>Jenny Chung © 2020 All Rights Reserved</p>
+            </div>
+
+        </div>
+    </div>
+    <div id="gotop">
+        <a href="javascript:;"><i class="fas fa-angle-up fa-3x"></i></a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
+    <script>
+        $(function () {
+            //右下角click 移到最上面
+            $('#gotop').click(function () {
+                $('html,body').animate({
+                    scrollTop: 0
+                })
+            })
+
+            //右下角小圖出現
+            $('#gotop').hide()
+            $(window).scroll(function () {
+                let height = $(this).scrollTop()
+                if (height > 80) {
+                    $('#gotop').show()
+                    $('#gotop').removeClass()
+                    // $('#gotop').addClass('animated bounceIn')
+                    $('#gotop').addClass('animated jackInTheBox')
+                } else {
+                    $('#gotop').removeClass()
+                    $('#gotop').addClass('animated bounceOut')
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

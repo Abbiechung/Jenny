@@ -1,0 +1,640 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+:root{
+    --primarycolor: rgb(102, 102, 102);
+    --light: #eee;
+    --dark: rgb(17, 17, 17);
+}
+
+.clearfix{
+    content:"";
+    display: block;
+    clear: both;
+}
+
+html,body,h1,h2,h3,h4,h5,h6,ul,ol,li,img,p{
+    border: 0;
+    margin: 0;
+    padding: 0'
+}
+
+ul,ol,li{
+    list-style: none;
+}
+
+p{
+    color: var(--primarycolor);
+    line-height: 1.5em;
+}
+img{
+    width: 100%;
+    vertical-align: top;
+}
+.btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(33, 78, 33);
+    color: var(--light);
+    text-decoration: none;
+}
+@media screen and (min-width:960px){
+.btn:hover{
+    position: relative;
+    top: 2px;
+    left: 2px;
+}}
+
+.full-width{
+    width: 100%;
+}
+
+.fixed-width{
+    width: 100%;
+    margin: auto;
+}
+@media screen and (min-width:1200px){
+.fixed-width{
+    width: 1200px;
+    margin: auto;
+}}
+
+
+[class*="col"]{
+    width: 100%;
+    padding: 15px;
+}
+@media screen and (min-width:480px){
+.col-1{
+    width: calc(100% / 12 * 1);
+}
+.col-2{
+    width: calc(100% / 12 * 2);
+}
+.col-3{
+    width: calc(100% / 12 * 3);
+}
+.col-4{
+    width: calc(100% / 12 * 4);
+}
+.col-5{
+    width: calc(100% / 12 * 5);
+}
+.col-6{
+    width: calc(100% / 12 * 6);
+}
+.col-7{
+    width: calc(100% / 12 * 7);
+}
+.col-8{
+    width: calc(100% / 12 * 8);
+}
+.col-9{
+    width: calc(100% / 12 * 9);
+}
+.col-10{
+    width: calc(100% / 12 * 10);
+}
+.col-11{
+    width: calc(100% / 12 * 11);
+}
+.col-12{
+    width: calc(100% / 12 * 12);
+}
+[class*="col"]{
+    float: left;
+    padding: 15px;
+}}
+
+
+/* nav */
+
+nav .fixed-width{
+    /* height: 80px; */
+    line-height: 50px;
+    position: absolute;
+    letter-spacing: 1px;
+    /* background: linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgb(255, 208, 208) 100%); */
+
+}
+@media screen and (min-width:768px){
+nav .fixed-width{
+    height: 60px;
+    line-height: 60px;
+    position: absolute;
+    /* letter-spacing: 2px; */
+    background: linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(255, 249, 215, 0.81) 100%);
+    left: 5%;
+    /* margin:auto; */
+
+}}
+@media screen and (min-width:968px){
+nav .fixed-width{
+    height: 80px;
+    line-height: 80px;
+    position: absolute;
+    letter-spacing: 2px;
+    background: linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(255, 249, 215, 0.81) 100%);
+    left: 5%;
+    /* margin:auto; */
+
+}}
+@media screen and (min-width:1200px){
+nav .fixed-width{
+    height: 80px;
+    line-height: 80px;
+    position: absolute;
+    letter-spacing: 2px;
+    background-color: rgb(247, 252, 247);
+    left: 10%;
+    /* margin:auto; */
+
+}}
+
+@media screen and (min-width:768px){
+.left{
+    float: left;
+}}
+@media screen and (min-width:768px){
+ul{
+    float: left;
+}}
+
+li{
+    border-bottom: 1px solid #555;
+}
+@media screen and (min-width:768px){
+li{
+    border-bottom: none;
+    float: left;
+}}
+a{
+    text-decoration: none;
+    color: var(--dark);
+    padding-right: 35px;
+    /* transition: all .5s; */
+}
+.middle{
+    /* float: left; */
+    padding: 15px 35px;
+    font-size: 25px;
+}
+@media screen and (min-width:768px){
+.middle{
+    float: left;
+    padding: 10px 50px;
+    font-size: 25px;
+}}
+@media screen and (min-width:968px){
+.middle{
+    float: left;
+    padding: 15px 100px;
+    font-size: 35px;
+}}
+.middle p{
+    color: var(--dark);
+}
+@media screen and (min-width:768px){
+.right{
+    float: right;
+}}
+@media screen and (min-width:768px){
+nav a:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}}
+
+/* header */
+header{
+    background-image: url(../images/01.gif);
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; */
+    display: table;
+}
+@media screen and (min-width:768px){
+header{
+    background-image: url(../images/01.gif);
+    height: 900px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; */
+    display: table;
+}}
+header .fixed-width{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+header h1{
+    color: var(--primarycolor);
+    margin-top: 280px;
+    padding: 10px 40px;
+    /* letter-spacing: 3px; */
+    font-size: 35px;
+}
+@media screen and (min-width:480px){
+header h1{
+    color: var(--primarycolor);
+    margin-top: 250px;
+    padding: 10px 60px;
+    /* letter-spacing: 3px; */
+    font-size: 40px;
+}}
+@media screen and (min-width:768px){
+header h1{
+    color: var(--primarycolor);
+    margin-top: 0;
+    padding: 10px 200px;
+    /* letter-spacing: 3px; */
+    font-size: 60px;
+}}
+@media screen and (min-width:968px){
+header h1{
+    color: var(--primarycolor);
+    margin-top:0;
+    padding: 0 300px;
+    letter-spacing: 3px;
+    font-size: 65px;
+}}
+header p{
+    margin-top: 10px;
+    padding: 5px 40px;
+    font-size: 16px;
+    color: var(--dark);
+}
+@media screen and (min-width:480px){
+header p{
+    margin-top: 10px;
+    padding: 10px 60px;
+    font-size: 20px;
+    color: var(--dark);
+}}
+@media screen and (min-width:768px){
+header p{
+    padding: 30px 100px;
+    font-size: 35px;
+    color: var(--dark);
+}}
+@media screen and (min-width:968px){
+header p{
+    padding: 55px 300px;
+    font-size: 25px;
+    color: var(--dark);
+}}
+header .btn{
+    display: block;
+    text-align: center;
+    padding: 15px 0px;
+    margin-top: 10px;
+
+}
+@media screen and (min-width:768px){
+header .btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(33, 78, 33);
+    color: var(--light);
+    text-decoration: none;
+}}
+
+/* #send */
+#send{
+    margin-top: 30px;
+}
+@media screen and (min-width:768px){
+#send{
+    margin-top: 50px;
+}}
+#send .fixed-width{   
+    background-image: url(../images/02.jpg);
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: table; 
+
+}
+@media screen and (min-width:768px){
+#send .fixed-width{   
+    background-image: url(../images/02.jpg);
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: table; 
+
+}}
+#send .contect{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+#send h2{
+    font-size: 30px;
+    padding: 0px 50px;
+    letter-spacing: 2xp;
+}
+@media screen and (min-width:480px){
+#send h2{
+    font-size: 40px;
+    padding: 10px 60px;
+    letter-spacing: 3xp;
+}}
+@media screen and (min-width:768px){
+#send h2{
+    font-size: 60px;
+    padding: 10px 250px;
+    letter-spacing: 3xp;
+}}
+#send i{
+    font-size: 25px;
+    padding: 20px 5px;
+    color: rgb(79, 111, 138);
+    /* transition: all 1s; */
+}
+@media screen and (min-width:480px){
+#send i{
+    font-size: 35px;
+    padding: 35px 5px;
+    color: rgb(79, 111, 138);
+    transition: all 1s;
+}}
+@media screen and (min-width:768px){
+#send i{
+    font-size: 50px;
+    padding: 35px 5px;
+    color: rgb(79, 111, 138);
+    transition: all 1s;
+}}
+@media screen and (min-width:480px){
+#send i:hover{
+    color: rgb(236, 102, 102);
+}}
+
+/* #product */
+#product{
+    margin: 20px 0 ;
+}
+@media screen and (min-width:480px){
+#product{
+    margin: 70px 0 ;
+}}
+#product .fixed-width{
+    background-color: rgba(165, 210, 231, 0.87);
+    height: 1800px;
+}
+@media screen and (min-width:480px){
+#product .fixed-width{
+    background-color: rgba(165, 210, 231, 0.87);
+    height: 600px;
+}}
+@media screen and (min-width:768px){
+#product .fixed-width{
+    background-color: rgba(165, 210, 231, 0.87);
+    height: 700px;
+}}
+#product .col-12{
+    margin-top: 20px;
+    text-align: center;
+    color: var(--light);
+}
+@media screen and (min-width:480px){
+#product .col-12{
+    margin-top: 30px;
+    text-align: center;
+    color: var(--light);
+}}
+@media screen and (min-width:768px){
+#product .col-12{
+    margin-top: 50px;
+    text-align: center;
+    color: var(--light);
+}}
+
+#product .col-4{
+    padding: 5px 30px;
+    text-align: center;
+}
+@media screen and (min-width:480px){
+#product .col-4{
+    padding: 5px 15px;
+    text-align: center;
+}}
+@media screen and (min-width:768px){
+#product .col-4{
+    padding: 10px 20px;
+    text-align: center;
+}}
+@media screen and (min-width:968px){
+#product .col-4{
+    padding: 10px 60px;
+    text-align: center;
+}}
+#product h4{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+@media screen and (min-width:480px){
+#product h4{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}}
+#product .btn{
+    display: block;
+    margin-top: 20px;
+    background-color: rgb(250, 248, 248);
+    color: rgb(92, 90, 90);
+}
+@media screen and (min-width:768px){
+#product .btn{
+    display: inline-block;
+    margin-top: 20px;
+    background-color: rgb(250, 248, 248);
+    color: rgb(92, 90, 90);
+}}
+
+/* #smooth */
+#smooth .col-5{
+    height: 350px;
+    text-align: center;
+    background-color: #eee;
+    padding: 0;
+}
+@media screen and (min-width:480px){
+#smooth .col-5{
+    height: 350px;
+    text-align: center;
+    background-color: #eee;
+    padding: 0;
+    margin-bottom: 50px;
+}}
+#smooth img{
+    /* width: 100%; */
+    height: 350px;
+}
+#smooth h4{
+    /* margin-top: 20px; */
+    padding-top: 60px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+@media screen and (min-width:480px){
+#smooth h4{
+    margin-top: 50px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    font-size: 30px;
+}}
+@media screen and (min-width:768px){
+#smooth h4{
+    margin-top: 100px;
+    padding-top: 0;
+    margin-bottom: 20px;
+    font-size: 30px;
+}}
+#smooth p{
+    /* font-size:12px; */
+    margin-bottom: 20px;
+    padding: 0 35px;
+}
+@media screen and (min-width:480px){
+#smooth p{
+    font-size: 12px;
+    margin-bottom: 20px;
+    padding: 0 35px;
+}}
+@media screen and (min-width:768px){
+#smooth p{
+    font-size: 16px;
+    margin-bottom: 30px;
+    padding: 0 35px;
+}}
+#smooth a{
+    font-size: 25px;
+    color: rgb(39, 105, 136);
+}
+@media screen and (min-width:480px){
+#smooth a{
+    font-size: 20px;
+    color: rgb(39, 105, 136);
+}}
+@media screen and (min-width:768px){
+#smooth a{
+    font-size: 25px;
+    color: rgb(39, 105, 136);
+}}
+@media screen and (min-width:768px){
+#smooth a:hover{
+    position: relative;
+    top: 1px;
+    left: 1px;
+}}
+
+/* #cooking */
+#cooking{
+    height: 800px;
+}
+@media screen and (min-width:480px){
+#cooking{
+    height: 250px;
+}}
+@media screen and (min-width:768px){
+#cooking{
+    height: 400px;
+}}
+@media screen and (min-width:968px){
+#cooking{
+    height: 450px;
+}}
+#cooking .col-12{
+    text-align: center;
+    font-size: 20px;
+    overflow: hidden;
+}
+@media screen and (min-width:480px){
+#cooking .col-12{
+    text-align: center;
+    font-size: 25px;
+    overflow: hidden;
+}}
+@media screen and (min-width:768px){
+#cooking .col-12{
+    text-align: center;
+    font-size: 30px;
+    overflow: hidden;
+}}
+#cooking .col-4{
+    overflow: hidden;
+    /* padding-right: 35px; */
+}
+@media screen and (min-width:480px){
+#cooking .col-4{
+    overflow: hidden;
+    padding-right: 10px;
+}}
+@media screen and (min-width:768px){
+#cooking .col-4{
+    overflow: hidden;
+    padding-right: 20px;
+}}
+@media screen and (min-width:968px){
+#cooking .col-4{
+    overflow: hidden;
+    padding-right: 35px;
+}}
+#cooking img{
+    width: 100%;
+    height: 230px;
+}
+@media screen and (min-width:480px){
+#cooking img{
+    width: 100%;
+    height: 200px;
+}}
+@media screen and (min-width:768px){
+#cooking img{
+    width: 100%;
+    height: 300px;
+}}
+@media screen and (min-width:968px){
+#cooking img{
+    width: 100%;
+    height: 350px;
+}}
+
+/* footer */
+footer{
+    margin-top: 80px;
+    padding-top: 20px;
+    height:200px;
+    background-color: rgba(29, 109, 36, 0.671);
+    color: var(--light);
+}
+@media screen and (min-width:480px){
+footer{
+    margin-top: 100px;
+    padding-top: 50px;
+    height:200px;
+    background-color: rgba(29, 109, 36, 0.671);
+    color: var(--light);
+}}
+footer h2{
+    margin-bottom: 30px;
+}
+footer a{
+    color: var(--light);
+}
+footer a:hover{
+    position: relative;
+    top: 2px;
+    left: 2px;
+}

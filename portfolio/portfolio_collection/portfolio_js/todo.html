@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Noto Sans TC', sans-serif;
+    }
+
+    html {
+        /* background: linear-gradient(to bottom, rgba(247,251,252,1) 0%,rgb(226, 249, 255) 40%,rgb(188, 237, 255) 100%); */
+        height: 100%;
+        background-image: url('images/123.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    html,
+    body,
+    p,
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .container {
+        width: 300px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    li.list {
+        list-style: none;
+        padding: 10px;
+        background: -webkit-linear-gradient(top, #d0e4f7 0%, #73b1e7 24%, #abd8ff 50%, #539fe1 79%, #87bcea 100%);
+        margin: 10px 10px 10px 0;
+        border-radius: 5px;
+        box-shadow: 1px 2px 5px #6f6f6f;
+        border: 1px solid #fefefe;
+        color: #fff;
+        text-shadow: 1px 1px 1px #393939;
+    }
+
+    .del {
+        float: right;
+        background: linear-gradient(to bottom, rgba(235, 233, 249, 1) 0%, rgba(216, 208, 239, 1) 50%, rgba(206, 199, 236, 1) 51%, rgba(193, 191, 234, 1) 100%);
+        padding: 2px;
+        box-shadow: inset 1px 1px 3px 0px #ffffff;
+        cursor: pointer;
+        color: #ffa8a8;
+        border-radius: 3px;
+        border: 1px solid #b7b7b7;
+    }
+
+
+    .del:hover {
+        /* color:#f33939; */
+        background: #000000;
+        color: rgb(255, 125, 125);
+        transition: 0.5s;
+    }
+
+    .list.complete {
+        text-decoration: line-through;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.68) 100%);
+        color: #bababa;
+        transition: .5s;
+    }
+</style>
+
+<body>
+    <!-- 代辦事項 -->
+    <div class="container">
+        <input type="text" id="input">
+        <button id='todo'>add</button>
+        <ul id='todos'>
+            <li class='list'>待辦事項 1 <span class='del'>delete</span></li>
+            <li class='list'>待辦事項 2 <span class='del'>delete</span></li>
+            <li class='list'>待辦事項 3 <span class='del'>delete</span></li>
+        </ul>
+    </div>
+
+    <script>
+        function show() {
+            let input = document.getElementById('input').value
+            if(input === ''){
+                alert('請輸入文字')
+                return
+            }
+            let li = document.createElement('li')
+            let next_node = document.createTextNode(input)
+            li.appendChild(next_node)
+            li.classList.add('list')
+            document.getElementById('todos').appendChild(li);
+
+            let span = document.createElement('span')
+            span.append('delete')
+            span.classList.add('del')
+            li.append(span)
+
+            document.getElementById('input').value = '';
+            
+        }
+        document.getElementById('todo').onclick = function () {
+            show()
+        }
+
+
+        document.onclick = function (e) {
+            if (e.target.className.indexOf('del') > -1) {
+                e.target.parentElement.remove()
+            }
+
+            if (e.target.className.indexOf('list') > -1) {
+                e.target.classList.toggle('complete')
+            }
+        }
+
+
+
+    </script>
+
+
+
+
+    <!-- 搜尋 -->
+    <!-- <input type="text" id='input'>
+    <ul>
+        <li>html</li>
+        <li>css</li>
+        <li>js</li>
+        <li>jQuery</li>
+        <li>PHP</li>
+    </ul>
+
+    <script>
+        function test() {
+            let input = document.getElementById('input').value
+            let li = document.querySelectorAll('li')
+            li.forEach(function (data) {
+                if (data.textContent.indexOf(input) > -1) {
+                    data.style.display = ''
+                } else {
+                    data.style.display = 'none'
+                }
+            })
+        }
+        document.getElementById('input').onkeyup = function(){
+            test()
+        }
+
+    </script> -->
+
+
+
+    <!-- 密碼 -->
+    <!-- <input type="password" id="pw"> <button id='button'>change</button>
+
+    <script>
+
+        function test(){
+            let pw = document.getElementById('pw')
+            let type = pw.getAttribute('type')
+            if(pw.type === 'password'){
+                pw.setAttribute('type','text')
+            }else{
+                pw.setAttribute('type','password')
+            }
+        }
+        document.getElementById('button').onclick = function(){
+            test()
+        }
+
+    </script> -->
+
+
+</body>
+
+</html>

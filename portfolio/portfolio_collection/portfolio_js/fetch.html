@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    html {
+        /* background: linear-gradient(to bottom, rgba(247,251,252,1) 0%,rgb(226, 249, 255) 40%,rgb(188, 237, 255) 100%); */
+        background-image: url('images/123.png');
+        height: 100%;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .fixed-width {
+        width: 1200px;
+        margin: auto;
+    }
+
+    .col-2 {
+        width: calc(100% / 12 * 2);
+    }
+
+    .col-4 {
+        width: calc(100% / 12 * 4);
+    }
+
+    .col-5 {
+        width: calc(100% / 12 * 5);
+    }
+
+    .col-6 {
+        width: calc(100% / 12 * 6);
+    }
+
+    .col-7 {
+        width: calc(100% / 12 * 7);
+    }
+
+    .col-8 {
+        width: calc(100% / 12 * 8);
+    }
+
+    .col-12 {
+        width: calc(100% / 12 * 12);
+    }
+
+
+    [class*='col'] {
+        float: left;
+        padding: 15px;
+    }
+
+    .clearfix {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .container {
+        background: linear-gradient(to bottom, rgba(242, 246, 248, 1) 0%, rgb(255, 255, 255) 50%, rgb(245, 245, 245) 51%, rgba(224, 239, 249, 1) 100%);
+        border: 1px solid #c7c7c7;
+        box-shadow: 1px 2px 6px 1px #c7c7c7;
+        margin-top: 30px;
+    }
+
+    .photo {
+        float: left;
+        text-align: center;
+    }
+
+    .photo #img {
+        box-shadow: 0px 0px 13px 2px #ffffff;
+        border-radius: 50%;
+        width: 70%;
+        /* border: 7px solid #ffd3c8; */
+        border: 5px solid #f4f4f4;
+        box-shadow: 1px 1px 5px 2px #c0c0c0;
+    }
+
+    .profile {
+        float: left;
+        padding: 10px;
+    }
+
+    .profile .content {
+        margin-top: 16px;
+        font-size: 17px;
+        color: #5c5c5c;
+        letter-spacing: 1px;
+    }
+
+    .button {
+        cursor: pointer;
+    }
+    .button p:hover{
+        background: linear-gradient(135deg, rgba(239,197,202,1) 0%,rgba(210,75,90,1) 50%,rgba(186,39,55,1) 51%,rgba(241,142,153,1) 100%); 
+        position: relative;
+        left: 1px;
+        top: 1px;
+    }
+
+    .button p {
+        width: 300px;
+        margin: auto;
+        text-align: center;
+        padding: 10px;
+        font-size: 25px;
+        color: #b2f8ff;
+        background: linear-gradient(135deg, rgba(174, 188, 191, 1) 0%, rgba(110, 119, 116, 1) 50%, rgba(10, 14, 10, 1) 51%, rgba(10, 8, 9, 1) 100%);
+        text-shadow: 3px 3px 3px #000;
+        box-shadow: 2px 3px 3px #313131;
+    }
+</style>
+
+<body>
+    <div id="user" class="full-width">
+        <div class="fixed-width clearfix">
+            <div class="col-2"></div>
+            <div class="container col-8">
+                <div class="photo col-5">
+                    <img id="img" src="" alt="">
+                </div>
+                <div class="profile col-7">
+                    <div class="content">
+                        <div id="name">Name: </div>
+                    </div>
+                    <div class="content">
+                        <div id="gender">Gender:</div>
+                    </div>
+                    <div class="content">
+                        <div id="email">Email:</div>
+                    </div>
+                    <div class="content">
+                        <div id="city">City:</div>
+                    </div>
+                    <div class="content">
+                        <div id="country">Country:</div>
+                    </div>
+                    <div class="content">
+                        <div id="state">State:</div>
+                    </div>
+                    <div class="content">
+                        <div id="latitude">latitude:</div>
+                    </div>
+                    <div class="content">
+                        <div id="longitude">longitude:</div>
+                    </div>
+                    <div class="content">
+                        <div id="offset">offset:</div>
+                    </div>
+                    <div class="content">
+                        <div id="phone">phone:</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <div id="button" class="full-width">
+        <div class="fixed-width clearfix">
+            <div class="button col-12">
+                <p>refresh</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        function getUrl(url) {
+            let promise = fetch(
+                url = url
+            )
+            return promise
+        }
+
+        function getApiUrl() {
+            let promise = getUrl('https://randomuser.me/api/')
+            promise.then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    let result = data.results[0]
+                    let nameTitle = result.name.title
+                    let namefirst = result.name.first
+                    let namelast = result.name.last
+                    let name = nameTitle + ' ' + namefirst + ' ' + namelast    // 姓名
+                    console.log(name)
+
+
+                    let gender = result.gender  			//性別
+                    let email = result.email  			//email
+                    let city = result.location.city  	//程式
+                    let country = result.location.country  	//國家
+                    let img = result.picture.large  	//圖片
+                    let state = result.location.state
+                    let latitude = result.location.coordinates.latitude
+                    let longitude = result.location.coordinates.longitude
+                    let offset = result.location.timezone.offset
+                    let phone = result.phone
+
+
+                    function profile() {
+                        document.getElementById('img').setAttribute('src', img)
+                        document.getElementById('name').append('  ' + name)
+                        document.getElementById('gender').append('  ' + gender)
+                        document.getElementById('email').append('  ' + email)
+                        document.getElementById('city').append('  ' + city)
+                        document.getElementById('country').append('  ' + country)
+                        document.getElementById('state').append('  ' + state)
+                        document.getElementById('latitude').append('  ' + latitude)
+                        document.getElementById('longitude').append('  ' + longitude)
+                        document.getElementById('offset').append('  ' + offset)
+                        document.getElementById('phone').append('  ' + phone)
+
+
+                    }
+                    profile()
+                })
+        }
+        getApiUrl()
+
+        document.getElementById('button').onclick = function () {
+            window.location.reload();
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

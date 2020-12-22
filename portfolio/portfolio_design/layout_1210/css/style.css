@@ -1,0 +1,469 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto Condensed', sans-serif,"微軟正黑體"; 
+}
+
+:root{
+    --primarycolor: rgb(39, 39, 39);
+    --dark: rgb(0, 0, 0);
+    --light1: rgb(243, 137, 137);
+    --light2:#eee;
+}
+
+.clearfix::after{
+    content:"";
+    display: block;
+    clear: both;
+}
+
+html,body,h1,h2,h3,h4,h5,h6,ul,ol,li,img,p{
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+ul,ol,li{
+    list-style: none;
+}
+
+p{
+    color: var(--paimarycolor);
+    line-height: 1.5em;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: rgb(252, 243, 164);
+    color: var(--primarycolor);
+    text-decoration: none;
+    transition: all 1s;
+}
+img{
+    width: 100%;
+    vertical-align: top;
+}
+
+
+.full-width{
+    width: 600px;
+}
+@media screen and (min-width:768px){
+.full-width{
+    width: 700px;
+}}
+@media screen and (min-width:968px){
+.full-width{
+    width: 100%;
+}}
+
+.fixed-width{
+    width: 600px;
+    margin: auto;
+}
+@media screen and (min-width:768px){
+.fixed-width{
+    width: 700px;
+    margin: auto;
+}}
+@media screen and (min-width:968px){
+.fixed-width{
+    width: 1200px;
+    margin: auto;
+}}
+
+[class*=col]{
+    width:100%;
+    padding: 15px;
+}
+@media screen and (min-width:480px){
+.col-1{
+    width: calc(100% / 12 * 1);
+}
+.col-2{
+    width: calc(100% / 12 * 2);
+}
+.col-3{
+    width: calc(100% / 12 * 3);
+}
+.col-4{
+    width: calc(100% / 12 * 4);
+}
+.col-5{
+    width: calc(100% / 12 * 5);
+}
+.col-6{
+    width: calc(100% / 12 * 6);
+}
+.col-7{
+    width: calc(100% / 12 * 7);
+}
+.col-8{
+    width: calc(100% / 12 * 81);
+}
+.col-9{
+    width: calc(100% / 12 * 9);
+}
+.col-10{
+    width: calc(100% / 12 * 10);
+}
+.col-11{
+    width: calc(100% / 12 * 11);
+}
+.col-12{
+    width: calc(100% / 12 * 12);
+}
+
+[class*=col]{
+    float:left;
+    padding: 15px;
+}}
+
+#folio{
+    height: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 15px;
+}
+@media screen and (min-width:768px){
+#folio{
+    height: 100px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 15px;
+}}
+
+/* img1 */
+#img1 img{
+    width:auto;
+}
+@media screen and (min-width:768px){
+#img1 img{
+
+    width:100%;
+}}
+@media screen and (min-width:968px){
+#img1 img{
+    width:100%;
+    height: 100%;
+}}
+
+/* menu */
+#menu li{
+    border-bottom: 1px solid #555;
+    padding-top: 20px;
+}
+@media screen and (min-width:768px){
+#menu li{
+    border-bottom: none;
+    float: left;
+}}
+#menu a{
+   color: var(--primarycolor);
+   display: block;
+   text-decoration: none;
+   padding: 0 35px; 
+}
+#menu .col-5{
+    padding: 30px 0;
+}
+@media screen and (min-width:768px){
+#menu .col-5{
+    padding: 30px 120px;
+}}
+#menu .col-2{
+    padding: 10px 35px;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+@media screen and (min-width:480px){
+#menu .col-2{
+    padding: 10px 0px;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}}
+@media screen and (min-width:768px){
+#menu .col-2{
+    padding: 25px 50px;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}}
+
+/* work */
+#work p{
+    /* text-align: center; */
+    padding: 10px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+@media screen and (min-width:480px){
+#work p{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}}
+
+/* img2 */
+#img2{
+    padding-bottom: 80px;
+}
+#img2 .col-4{
+    /* width:auto; */
+    height:200px;
+    overflow: hidden;
+}
+@media screen and (min-width:480px){
+#img2 .col-4{
+    width:300px;
+    height:250px;
+    overflow: hidden;
+}}
+@media screen and (min-width:768px){
+#img2 .col-4{
+    width:350px;
+    height:300px;
+    overflow: hidden;
+}}
+@media screen and (min-width:968px){
+#img2 .col-4{
+    width:400px;
+    height:300px;
+    overflow: hidden;
+}}
+
+#img2 .col-4 img{
+    width: 100%;
+}
+@media screen and (min-width:768px){
+#img2 .col-4 img{
+    width: auto;
+    height: 300px;
+    opacity: 0.7;
+    transition: all 1s;
+}}
+@media screen and (min-width:768px){
+#img2 .col-4:hover img{
+    opacity: 1;
+}}
+
+/* about */
+#about{
+    padding-top:15px;
+    padding-bottom:80px;
+    background-color: rgb(213, 238, 237);
+}
+@media screen and (min-width:768px){
+#about{
+    padding-top:15px;
+    padding-bottom:150px;
+    background-color: rgb(213, 238, 237);
+}}
+#about p{
+    text-align: center;
+    padding: 10px 30px;
+    font-size:25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+@media screen and (min-width:768px){
+#about p{
+    text-align: center;
+    font-size:25px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}}
+
+#about h2{
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px 100px;
+    letter-spacing: 3px;
+    line-height: 1.3em;
+}
+@media screen and (min-width:768px){
+#about h2{
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    font-size: 45px;
+    font-weight: bold;
+    padding: 20px 250px;
+    letter-spacing: 3px;
+    line-height: 1.6em;
+}}
+@media screen and (min-width:768px){
+#about .col-12{
+    text-align: center;
+}}
+#about .btn{
+    display: block;
+    text-align: center;
+    padding: 10px 55px;
+    border: 1px solid rgb(167, 165, 165);
+    /* transition: all 2s; */
+}
+@media screen and (min-width:768px){
+#about .btn{
+    display: inline-block;
+    padding: 10px 55px;
+    border: 1px solid rgb(167, 165, 165);
+    transition: all 2s;
+}
+#about .btn:hover{
+    position: relative;
+    top: 3px;
+    left: 3px;
+}}
+
+/* contact */
+#contact{
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-image: linear-gradient(to right,rgb(255, 255, 255) 50%,rgb(250, 186, 202) 50%);
+}
+#contact p{
+    text-align: center;
+    font-size:25px;
+    font-weight: bold;
+    letter-spacing: 5px; 
+}
+#contact .left{
+   margin-top: 50px;
+   padding:0 100px;
+   text-align: center;
+}
+#contact h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+@media screen and (min-width:480px){
+#contact h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}}
+@media screen and (min-width:768px){
+#contact h2{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}}
+#contact .left p{
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+@media screen and (min-width:480px){
+#contact .left p{
+    font-size: 12px;
+    margin-bottom: 30px;
+}}
+@media screen and (min-width:768px){
+#contact .left p{
+    font-size: 16px;
+    margin-bottom: 30px;
+}}
+#contact .tel{
+    padding-right: 30px;
+}
+#contact .right p{
+    font-size: 16px;
+    margin-top: 50px;
+}
+#contact .icon{
+    margin-top: 30px;
+}
+#contact .icon i{
+    font-size: 20px;
+    padding-right: 10px;
+    color: rgb(230, 29, 63);
+    /* text-align: left; */
+}
+@media screen and (min-width:480px){
+#contact .icon i{
+    font-size: 25px;
+    padding-right: 3px;
+    color: rgb(230, 29, 63);
+    /* text-align: left; */
+}}
+@media screen and (min-width:768px){
+#contact .icon i{
+    font-size: 40px;
+    padding-right: 10px;
+    color: rgb(230, 29, 63);
+    /* text-align: left; */
+}}
+@media screen and (min-width:968px){
+#contact .icon i{
+    font-size: 50px;
+    padding-right: 25px;
+    color: rgb(230, 29, 63);
+    /* text-align: left; */
+}}
+#contact .name{
+    color: black;
+    text-align: left;
+    /* border-bottom: 1px solid black; */
+}
+@media screen and (min-width:768px){
+#contact .name{
+    color: white;
+    text-align: left;
+}}
+#contact .btn{
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 130px;
+    padding: 10px 55px;
+    border: 1px solid rgb(167, 165, 165);
+    /* transition: all 2s; */
+}
+#contact .btn:hover{
+    position:relative;
+    top:3px;
+    left:3px;
+}
+
+
+/* footer */
+footer{
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: var(--dark);
+    color: #eee;
+    font-size: 12px;
+}
+
+footer .left{
+    text-align: center;
+}
+@media screen and (min-width:768px){
+footer .left{
+    text-align: right;
+}}
+footer .right{
+    text-align: center;
+}
+@media screen and (min-width:768px){
+footer .right{
+    text-align: left;
+}}
+footer .icon{
+    text-align: center;
+}
+footer .icon i{
+    padding-right: 10px;
+    color:pink;
+}
