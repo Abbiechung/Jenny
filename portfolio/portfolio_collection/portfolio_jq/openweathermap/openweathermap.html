@@ -94,6 +94,11 @@
         border: 1px solid #fff;
     }
 
+    .default {
+        /* background: red; */
+        background-image: url('images/default.jpg');
+        background-size: cover;
+    }
     .taichung {
         /* background: red; */
         background-image: url('images/taichung.jpg');
@@ -138,7 +143,7 @@
     <div class="container">
         <div class="select">
             <select name="" id="city">
-                <option value="">Select</option>
+                <option value="" class="default">Select</option>
                 <option value="Taichung">Taichung</option>
                 <option value="London">London</option>
                 <option value="Tokyo">Tokyo</option>
@@ -156,10 +161,13 @@
     <script>
         $(function () {
 
+            let defaultCity = $('#city').val()
+            if (defaultCity == '') $('#weather').addClass('default')
+
             $('#city').change(function () {
                 $('#weather').empty()
                 let city = $('#city').val()
-
+                
                 //更換背景圖
                 if (city == 'Taichung') {
                     $('#weather').removeClass()
@@ -230,7 +238,7 @@
                             imgSrc = 'images/snow.png'
                         } else if (weather == 'Thunderstorm') {
                             imgSrc = 'images/thunder.png'
-                        } else if (weather == 'Fog') {
+                        } else if (weather == 'Fog' || weather == 'Haze') {
                             imgSrc = 'images/fog.png'
                         } else {
                             imgSrc = 'images/none.png'
@@ -239,12 +247,11 @@
                         $('img').attr('src', imgSrc)
 
 
-
-
-
                     },
                     error: function () {
                         console.log('error')
+                        $('#weather').removeClass()
+                        $('#weather').addClass('default')
                     }
                 })
 
